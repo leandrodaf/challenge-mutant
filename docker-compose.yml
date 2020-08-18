@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  app-challenge-mutant:
+    image: node:12-alpine
+    command: yarn run watch-server
+    working_dir: /app
+    volumes:
+      - .:/app/
+    depends_on:
+      - elasticsearch
+    ports:
+      - "8080:8080"
+
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.0.0
+    environment:
+      - node.name=es01
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+
+volumes:
+  esdata:
+    driver: local
