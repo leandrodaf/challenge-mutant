@@ -1,0 +1,49 @@
+export default [
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    address: {
+      street: 'Norberto Crossing',
+      suite: 'Apt. 950',
+      city: 'South Christy',
+      zipcode: '23505-1337',
+      geo: {
+        lat: '-71.4197',
+        lng: '71.7478',
+      },
+    },
+    phone: '1-477-935-8478 x6430',
+    website: 'ola.org',
+    company: {
+      name: 'Considine-Lockman',
+      catchPhrase: 'Synchronised bottom-line interface',
+      bs: 'e-enable innovative applications',
+    },
+  },
+
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    address: {
+      street: 'Skiles Walks',
+      suite: 'Suite 351',
+      city: 'Roscoeview',
+      zipcode: '33263',
+      geo: {
+        lat: '-31.8129',
+        lng: '62.5342',
+      },
+    },
+    phone: '(254)954-1289',
+    website: 'demarco.info',
+    company: {
+      name: 'Keebler LLC',
+      catchPhrase: 'User-centric fault-tolerant solution',
+      bs: 'revolutionize end-to-end systems',
+    },
+  },
+];
