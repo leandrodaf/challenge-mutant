@@ -1,10 +1,10 @@
-import Koa from "koa";
-import bodyParser from "koa-bodyparser";
-import helmet from "koa-helmet";
-import cors from "@koa/cors";
+import Koa from 'koa';
+import bodyParser from 'koa-bodyparser';
+import helmet from 'koa-helmet';
+import cors from '@koa/cors';
 
-import { config } from "./Config";
-import { unprotectedRouter } from "./UnprotectedRoutes";
+import { config } from './Config';
+import { unprotectedRouter } from './UnprotectedRoutes';
 
 const app = new Koa();
 
