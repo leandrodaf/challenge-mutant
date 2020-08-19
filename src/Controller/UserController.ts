@@ -1,6 +1,7 @@
 import { BaseContext } from 'koa';
 import UserServices from '../Services/UserServices';
 import { userSummaryTransformer } from '../Transformer/UserSummaryTransformer';
+import { log } from '../Logger';
 
 export default class UserController {
   public static async index(ctx: BaseContext): Promise<void> {

@@ -1,18 +1,31 @@
 import { Context } from 'koa';
-import { transports, format } from 'winston';
+
+import winston, { transports, format } from 'winston';
+
+import { ElasticsearchTransport } from 'winston-elasticsearch';
+import { Client } from '@elastic/elasticsearch';
+
 import { config } from './Config';
 
-const logger = (winstonInstance: any): any => {
-  winstonInstance.configure({
-    level: config.debugLogging ? 'debug' : 'info',
-    transports: [
-      new transports.File({ filename: 'error.log', level: 'error' }),
-      new transports.Console({
-        format: format.combine(format.colorize(), format.simple()),
-      }),
-    ],
-  });
+const client = new Client({
+  node: config.elastic.serverUrl,
+  maxRetries: 5,
+  requestTimeout: 60000,
+});
 
+const log = winston.createLogger({
+  defaultMeta: { service: config.appName },
+  level: config.debugLogging ? 'debug' : 'info',
+  transports: [
+    new ElasticsearchTransport({ client, level: 'info' }),
+    new transports.File({ filename: 'error.log', level: 'error' }),
+    new transports.Console({
+      format: format.combine(format.colorize(), format.simple()),
+    }),
+  ],
+});
+
+const logger = (): any => {
   return async (ctx: Context, next: () => Promise<any>): Promise<void> => {
     const start = new Date().getTime();
 
@@ -29,10 +42,10 @@ const logger = (winstonInstance: any): any => {
       logLevel = 'info';
     }
 
-    const msg = `${ctx.method} ${ctx.originalUrl} ${ctx.status} ${ms}ms`;
+    const msg = `${ctx.method} ${ctx.originalUrl} ${ctx.status} ${ms}ms - ${ctx.id}`;
 
-    winstonInstance.log(logLevel, msg);
+    log.log(logLevel, msg);
   };
 };
 
-export { logger };
+export { logger, log };
