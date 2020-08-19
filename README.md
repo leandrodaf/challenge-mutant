@@ -1,3 +1,4 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/94b3a61f6c90753b9515/maintainability)](https://codeclimate.com/github/leandrodaf/challenge-mutant/maintainability)
 
 # challenge-mutant
 
