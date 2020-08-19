@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "watch-server": "nodemon --watch src -e ts,tsx --exec ts-node src/server.ts",
-    "build-ts": "tsc",
+    "build-ts": "tsc --project tsconfig.prod.json",
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
     "serve": "node dist/server.js",
     "build": "npm run lint && npm run build-ts",
@@ -16,6 +16,7 @@
   "license": "MIT",
   "repository": "github:leandrodaf/challenge-mutant",
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/jest": "^26.0.10",
     "@types/koa": "^2.11.3",
     "@types/koa-bodyparser": "^4.3.0",
@@ -42,7 +43,6 @@
     "@elastic/elasticsearch": "^7.8.0",
     "@koa/cors": "^3.1.0",
     "@koa/router": "^9.4.0",
-    "@types/axios": "^0.14.0",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "koa": "^2.13.0",

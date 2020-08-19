@@ -1,5 +1,5 @@
 import UserServices from './UserServices';
-import ResponseGetUserChallengeMutantApi from '../../__mocks__/ResponseGetUserChallengeMutantApi';
+import ResponseGetUserChallengeMutantApi from '../../__mocks__/ResponseGetUserChallengeMutantApi.mock';
 
 const mockGetUsers = jest.fn();
 

@@ -14,8 +14,9 @@ bower_components
 Thumbs.db
 
 # Ignore built ts files
-dist/**/*
 
 # Logging files
 *.log
 *.pyc
+
+dist

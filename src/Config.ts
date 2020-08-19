@@ -15,7 +15,7 @@ export interface Config {
   appName: string;
 }
 
-const isDevMode = process.env.NODE_ENV === 'development';
+const isDevMode = (process.env.NODE_ENV || 'development') === 'development';
 
 export const config: Config = {
   appName: process.env.APP_NAME || 'challenge-mutant',
@@ -23,7 +23,7 @@ export const config: Config = {
   debugLogging: isDevMode,
   elastic: {
     serviceName: process.env.ELASTIC_NAME || 'challenge-mutant',
-    serverUrl: process.env.ELASTIC_HOST,
+    serverUrl: process.env.ELASTIC_HOST || 'http://elasticsearch:9200',
     logLevel: process.env.ELASTIC_LOG_LEVEL || 'info',
   },
 };
