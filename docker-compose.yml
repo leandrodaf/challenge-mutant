@@ -3,7 +3,7 @@ version: "3"
 services:
   app-challenge-mutant:
     image: node:12-alpine
-    command: yarn run watch-server
+    command: ash -c "yarn install && yarn run watch-server"
     working_dir: /app
     volumes:
       - .:/app/
@@ -25,16 +25,6 @@ services:
       - esdata:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
-    networks:
-      - challenge-mutant
-
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.0.0
-    container_name: kibana
-    environment:
-      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
-    ports:
-      - "5601:5601"
     networks:
       - challenge-mutant
 
